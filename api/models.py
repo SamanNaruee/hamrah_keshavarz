@@ -13,6 +13,7 @@ class FarmerKey(models.Model):
 
 class FarmerToken(models.Model):
     farmer = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    farmer_key = models.CharField(max_length=255)
     token = models.CharField(max_length=255, unique=True)
     created_at = models.DateTimeField(auto_now_add=True)
     expired_at = models.DateTimeField(auto_now_add=True)

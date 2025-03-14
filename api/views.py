@@ -4,12 +4,17 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from .serializers import FarmerTokenSerializer, FarmerKeySerializer
 from .models import FarmerToken, FarmerKey
-
+import json
 
 
 class TokenView(APIView):
     def post(self, request):
-        farmer_key = request.body.get('farmer_key')
+        try:
+            body = json.loads(request.body.decode('utf-8'))
+            farmer_key = body.get('farmer_key')
+        except json.JSONDecodeError:  
+            return Response({'error': 'Invalid JSON!'}, status=status.HTTP_400_BAD_REQUEST)  
+        
         if not farmer_key:
             return Response({'error': 'farmer_key is required!'}, status=status.HTTP_400_BAD_REQUEST)
         
