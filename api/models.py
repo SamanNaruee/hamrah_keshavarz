@@ -2,6 +2,13 @@ import uuid
 from datetime import datetime, timedelta
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser
+from django.core import validators
+from django.core.validators import RegexValidator
+
+class FarmerKey(models.Model):
+    key = models.UUIDField(unique=True, default=uuid.uuid4, editable=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+    
 
 class Farmer(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -14,7 +21,7 @@ class Farmer(models.Model):
         blank=True,
         null=True,
         validators=[
-            models.RegexValidator(
+            RegexValidator(
                 regex=r'^0\d{11}$|^\+98\d{13}$',
                 message='phone number must be 11 digits and starts with 0 or 13 digits and starts with +98',
                 code='invalid_phone_number'
@@ -42,5 +49,4 @@ class FarmerToken(models.Model):
         self.token = uuid.uuid4()
         self.expired_at = datetime.now() + timedelta(minutes=30)
         self.save()
-    
     
