@@ -7,6 +7,7 @@ from .models import FarmerToken, FarmerKey
 import json
 
 
+
 class TokenView(APIView):
     def post(self, request):
         try:
@@ -18,7 +19,7 @@ class TokenView(APIView):
         if not farmer_key:
             return Response({'error': 'farmer_key is required!'}, status=status.HTTP_400_BAD_REQUEST)
         
-        farmer_token = FarmerToken.objects.create(farmer_key=farmer_key)
+        farmer_token, created = FarmerToken.objects.get_or_create(farmer_key=farmer_key)
         return Response(FarmerTokenSerializer(farmer_token).data, status=status.HTTP_201_CREATED)
 
 
