@@ -45,6 +45,7 @@ INSTALLED_APPS = [
 
     # Local apps
     'api',
+    'user',
 ]
 
 MIDDLEWARE = [
@@ -148,3 +149,4 @@ SIMPLE_JWT = {
     'AUTH_HEADER_TYPES': ('Bearer',),
 }
 
+AUTH_USER_MODEL = 'user.Farmer'

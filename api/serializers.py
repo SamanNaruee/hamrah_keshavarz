@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from api.models import Farmer, FarmerToken, FarmerKey
+from api.models import FarmerToken, FarmerKey
 
 class FarmerTokenSerializer(serializers.ModelSerializer):
     class Meta:
