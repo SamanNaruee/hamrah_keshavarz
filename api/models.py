@@ -24,3 +24,23 @@ class Farmer(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class FarmerToken(models.Model):
+    farmer = models.ForeignKey(Farmer, on_delete=models.CASCADE)
+    token = models.CharField(max_length=255, unique=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    expired_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f'{self.farmer} - {self.created_at} - {self.token}' if self.token else self.farmer.name
+    
+    def is_valid(self):
+        return self.expired_at > datetime.now()
+    
+    def refresh_token(self):
+        self.token = uuid.uuid4()
+        self.expired_at = datetime.now() + timedelta(minutes=30)
+        self.save()
+    
+    
