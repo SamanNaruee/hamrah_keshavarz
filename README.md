@@ -21,12 +21,12 @@ Django 3.x or higher
 PostgreSQL
 Other dependencies can be found in the requirements.txt file.
 
-Installation
+## Installation
 Clone the Repository:
 
 ```bash
-git clone https://github.com/your_username/your_project_name.git  
-cd your_project_name  
+git clone https://github.com/SamanNaruee/hamrah_keshavarz.git  
+cd hamrah_keshavarz
 ```
 Set Up a Virtual Environment:
 It is recommended to use a virtual environment to manage your project dependencies:
@@ -41,8 +41,8 @@ Install the necessary packages:
 ```bash
 pip install -r requirements.txt  
 ```
-Configuration
-Database Configuration:
+## Configuration
+## Database Configuration:
 Ensure you have PostgreSQL installed and set up. Create a new database for the project:
 
 ```sql
@@ -77,7 +77,7 @@ Before starting the application, run the migrations to set up the database schem
 python manage.py makemigrations  
 python manage.py migrate  
 ```
-Running the Development Server
+## Running the Development Server
 To run the development server, use the following command:
 
 ```bash
@@ -85,7 +85,7 @@ python manage.py runserver
 ```
 You can access the application in your web browser at http://127.0.0.1:8000/.
 
-Common Issues
+## Common Issues
 Database Errors: Ensure your database is correctly set up, and the PostgreSQL service is running.
 
 Permission Issues: If you encounter permissions errors (e.g., "permission denied for schema public"), ensure your PostgreSQL user has appropriate privileges. You can grant necessary permissions using:
@@ -97,7 +97,7 @@ Password Issues: If you encounter login errors related to the PostgreSQL user, d
 
 Migration Issues: When moving models between apps, ensure migrations are appropriately handled. You might need to delete old migration files and recreate them.
 
-License
+## License
 This project is licensed under the MIT License - see the LICENSE file for details.
 
 
