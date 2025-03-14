@@ -5,6 +5,7 @@ from django.contrib.auth.models import AbstractUser
 
 class Farmer(AbstractUser):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    is_farmer = models.BooleanField(default=True)
     name = models.CharField(max_length=255)
     username = models.CharField(max_length=255, unique=True)
     email = models.EmailField(unique=True)

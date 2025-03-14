@@ -1,0 +1,7 @@
+id = 56bdd714-b9df-49be-828e-dfc151b39a3c
+{  
+    "username": "samantargorin",  
+    "password": "saman1234!",  
+    "name": "saman naruee",  
+    "email": "samannaruee@gmail.com"  
+}  
